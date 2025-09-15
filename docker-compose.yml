@@ -1,0 +1,16 @@
+services:
+  dictionary:
+    build:
+      context: .
+  postgres:
+    image: postgres:14.8-alpine3.18
+    environment:
+      POSTGRES_DB: "dick"
+      POSTGRES_USER: "dick"
+      POSTGRES_PASSWORD: "1111"
+      PGDATA: "/var/lib/postgresql/data/pgdata"
+    volumes:
+      - dict-db:/var/lib/postgresql/data
+
+volumes:
+  dict-db:

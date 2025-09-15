@@ -1,0 +1,10 @@
+services:
+  dictionary:
+    volumes:
+      - ./:/app
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    user: '1000:1000'
+    ports:
+     - '5555:80'
+    command: "rr serve -c /app/.rr.dev.yaml"

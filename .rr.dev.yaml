@@ -1,0 +1,47 @@
+version: "3"
+
+server:
+  command: 'php 
+  -d zend_extension=xdebug.so 
+  -d xdebug.mode=debug 
+  -d xdebug.remote_enable=1 
+  -d xdebug.discover_client_host=1 
+  -d xdebug.client_host=host.docker.internal 
+  -d xdebug.idekey=PHPSTORM 
+  -d xdebug.client_port=9003 
+  -d xdebug.start_with_request=yes 
+  public/index.php'
+  env:
+    - APP_RUNTIME: Baldinof\RoadRunnerBundle\Runtime\Runtime
+    - XDEBUG_SESSION: '1'
+
+http:
+  address: 0.0.0.0:80
+  middleware: [ "static", "gzip" ]
+  pool:
+    debug: true
+  uploads:
+    forbid: [ ".php", ".exe", ".bat" ]
+  static:
+    dir: "public"
+    forbid: [ ".php", ".htaccess" ]
+
+metrics:
+  address: 0.0.0.0:2112
+
+rpc:
+  listen: tcp://127.0.0.1:6001
+
+status:
+  address: 127.0.0.1:2114
+
+logs:
+  mode: development
+  channels:
+    http:
+      level: debug # Log all http requests, set to info to disable
+    server:
+      level: info # Everything written to worker stderr is logged
+      mode: raw
+    metrics:
+      level: debug
