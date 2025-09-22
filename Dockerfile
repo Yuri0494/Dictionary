@@ -54,7 +54,8 @@ FROM base AS application
 COPY --from=ghcr.io/roadrunner-server/roadrunner:2024.3.5 /usr/bin/rr /usr/local/bin/rr
 COPY --from=base /usr/local/bin/composer /usr/local/bin/composer
 COPY --from=base /app /app
+# CMD ["ping" 'https://www.divan.ru/']
 
-CMD ["rr", "serve", "-c", "/app/.rr.yaml"]
+# CMD ["rr", "serve", "-c", "/app/.rr.yaml"]
 
 

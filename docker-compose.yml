@@ -2,6 +2,8 @@ services:
   dictionary:
     build:
       context: .
+    volumes:
+    - ./:/app:cached
   postgres:
     image: postgres:14.8-alpine3.18
     environment:
