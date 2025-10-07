@@ -1,0 +1,80 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Главная - EnglishDict{% endblock %}
+
+{% block body %}
+<div class="bg-white">
+    <!-- Hero Section -->
+    <div class="relative bg-gray-900">
+        <div class="absolute inset-0">
+            <img class="w-full h-full object-cover opacity-20" src="https://images.unsplash.com/photo-1501504905252-473c47e087f8?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80" alt="English learning">
+        </div>
+        <div class="relative max-w-7xl mx-auto py-24 px-4 sm:py-32 sm:px-6 lg:px-8">
+            <h1 class="text-4xl font-extrabold tracking-tight text-white sm:text-5xl lg:text-6xl">
+                Совершенствуйте ваш английский
+            </h1>
+            <p class="mt-6 text-xl text-gray-300 max-w-3xl">
+                Профессиональная платформа для изучения английского языка. 
+                Создавайте персональный словарь, тренируйтесь и отслеживайте прогресс.
+            </p>
+            <div class="mt-10 flex space-x-4">
+                {% if app.user %}
+                    <a href="{{ path('app_dictionary') }}" class="btn-primary text-white px-8 py-3 rounded-lg text-lg font-medium">
+                        Мой словарь
+                    </a>
+                {% else %}
+                    <a href="{{ path('app_register') }}" class="btn-primary text-white px-8 py-3 rounded-lg text-lg font-medium">
+                        Начать учиться
+                    </a>
+                    <a href="{{ path('app_login') }}" class="bg-white text-gray-900 px-8 py-3 rounded-lg text-lg font-medium border border-gray-300 hover:bg-gray-50">
+                        Войти
+                    </a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <!-- Features Section -->
+    <div class="py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <h2 class="text-3xl font-extrabold text-gray-900 sm:text-4xl">
+                    Почему выбирают EnglishDict?
+                </h2>
+                <p class="mt-4 text-lg text-gray-600">
+                    Современный подход к изучению английского языка
+                </p>
+            </div>
+
+            <div class="mt-16 grid grid-cols-1 gap-8 md:grid-cols-3">
+                <!-- Feature 1 -->
+                <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
+                    <div class="w-12 h-12 bg-gray-900 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fas fa-book text-white text-xl"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-2">Персональный словарь</h3>
+                    <p class="text-gray-600">Создавайте и управляйте своей собственной базой слов с переводами и примерами</p>
+                </div>
+
+                <!-- Feature 2 -->
+                <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
+                    <div class="w-12 h-12 bg-gray-900 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fas fa-brain text-white text-xl"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-2">Умные тренировки</h3>
+                    <p class="text-gray-600">Адаптивная система повторений для эффективного запоминания слов</p>
+                </div>
+
+                <!-- Feature 3 -->
+                <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
+                    <div class="w-12 h-12 bg-gray-900 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fas fa-chart-line text-white text-xl"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-2">Детальная статистика</h3>
+                    <p class="text-gray-600">Отслеживайте прогресс обучения и анализируйте результаты</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

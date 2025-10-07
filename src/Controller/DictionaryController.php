@@ -6,12 +6,17 @@ namespace App\Controller;
 
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use App\Patterns\FabricMethod\Game;
 
-class DictionaryController
+class DictionaryController extends AbstractController
 {
     #[Route('/dictionary')]
-    public function index(): Response
+    public function index(Request $request): Response
     {
-        return new Response('Hello world!', 201);
+        $game = new Game($request->get('race'));
+
+        return new Response($game->start(), 201);
     }
 }
